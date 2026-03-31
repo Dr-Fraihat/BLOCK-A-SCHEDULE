@@ -12,13 +12,13 @@
     --muted: #667085;
     --line: #d8e2ef;
     --head: #dce8f6;
-    --session-bg: #dff1e6;
-    --tasks-bg: #f1f3f5;
-    --admin-bg: #e7edf5;
-    --noshow-bg: #fde7d8;
-    --absent-bg: #efe3fb;
-    --mdt-bg: #f3d7dc;
-    --lunch-bg: #f4ebcc;
+    --session-bg: #d9f0d8;
+    --tasks-bg: #dbe8f5;
+    --admin-bg: #edf1f5;
+    --noshow-bg: #f9dfb0;
+    --absent-bg: #e7d8ef;
+    --mdt-bg: #f1d4e3;
+    --lunch-bg: #f4e5c6;
     --shadow: 0 10px 28px rgba(22, 50, 92, 0.08);
     --radius: 18px;
   }
@@ -69,7 +69,7 @@
   .schedule .name-head { font-size: 12px; font-weight: 700; line-height: 1.15; direction: rtl; }
   .schedule .time-col { background: #cfe0f4; font-weight: 800; font-size: 12px; padding: 8px 6px; position: sticky; left:0; z-index:3; min-width:82px; width:82px; }
   .slot-cell { width:86px; min-width:86px; padding: 4px; background:#fff; }
-  .slot { border-radius:10px; min-height: 56px; padding: 4px; display:flex; flex-direction:column; gap:4px; }
+  .slot { border-radius:10px; min-height: 56px; padding: 4px; display:flex; flex-direction:column; gap:4px; border:1px solid rgba(73,98,122,0.10); }
   .slot.session { background: var(--session-bg); }
   .slot.tasks { background: var(--tasks-bg); }
   .slot.admin { background: var(--admin-bg); }
@@ -84,7 +84,17 @@
   }
   .type-select {
     width: 100%; border-radius: 8px; padding: 3px 5px; font-size: 10px; font-weight: 700;
-    border:1px solid rgba(60,84,105,0.18); background:#fff; color:#102a43;
+    border:1px solid rgba(60,84,105,0.18); background:rgba(255,255,255,0.85); color:#102a43;
+  }
+  .legend {
+    display:flex; flex-wrap:wrap; gap:10px; margin-top:12px;
+  }
+  .legend-item {
+    display:flex; align-items:center; gap:6px; padding:6px 10px;
+    border:1px solid var(--line); border-radius:999px; background:#fff; font-size:12px; color:#334155;
+  }
+  .legend-swatch {
+    width:14px; height:14px; border-radius:4px; border:1px solid rgba(73,98,122,0.15);
   }
   .note { flex:1; min-height: 28px; font-size: 10px; line-height: 1.25; color:#506274; white-space: pre-wrap; overflow-wrap:anywhere; }
   .note[contenteditable="true"] { outline:none; }
@@ -130,6 +140,15 @@
     </div>
     <div class="helper">
       Use the drop-down in each editable slot to choose Session, Clinic Tasks, Admin, No Show, or Absent. Assigned sessions count slots marked Session or No Show. Actual sessions given count slots marked Session. Totals update automatically.
+    </div>
+    <div class="legend">
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--session-bg)"></span>Session</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--tasks-bg)"></span>Clinic Tasks</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--admin-bg)"></span>Admin</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--noshow-bg)"></span>No Show</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--absent-bg)"></span>Absent</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--mdt-bg)"></span>MDT</div>
+      <div class="legend-item"><span class="legend-swatch" style="background:var(--lunch-bg)"></span>Lunch</div>
     </div>
   </section>
 
@@ -183,7 +202,7 @@
 </div>
 
 <script>
-const STORAGE_KEY = 'blockA_schedule_2026_v8_dropdown_noshow_absent';
+const STORAGE_KEY = 'blockA_schedule_2026_v9_colorcoded';
 const staff = [
   { role: "SLP", name: "عبدالعزيز محيي الدين النجيدي", plannedPerDay: 4 },
   { role: "SLP", name: "رزان احمد البسام", plannedPerDay: 6 },
